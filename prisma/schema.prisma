@@ -145,7 +145,6 @@ model service {
   queue           queue[]
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model service_type {
   service_type_id   Int     @id @default(autoincrement())
   service_type_name String  @db.VarChar(100)
@@ -167,15 +166,15 @@ enum users_status {
   customer
 }
 
+enum estimate_status {
+  Not_responded
+  Responded
+}
+
 enum queue_status {
   Pending
   Confirmed
   Cancelled
   Completed
   No_Show   @map("No-Show")
-}
-
-enum estimate_status {
-  Not_responded
-  Responded
 }

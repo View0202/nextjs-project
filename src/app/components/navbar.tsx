@@ -3,35 +3,23 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useHeart } from "../context/heartContext";
-
+import { useAuth } from "../context/authContext";
 import { ScanFace, Heart, ShoppingBag, LogIn, LogOut, AlignRight } from "lucide-react";
 
-function navbar() {
-
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+function Navbar() {
+    const { isLoggedIn, logout } = useAuth(); // ✅ ใช้ useAuth()
     const [isScrolled, setIsScrolled] = useState(false);
     const { heartCount, resetHeartCount } = useHeart();
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
-        };
+        const handleScroll = () => setIsScrolled(window.scrollY > 0);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // ตรวจสอบสถานะการล็อกอินเมื่อโหลดหน้าเว็บ
     useEffect(() => {
-        const token = localStorage.getItem("token"); // สมมติว่าบันทึก token ไว้ใน localStorage
-        setIsLoggedIn(!!token); // แปลงเป็น Boolean
-    }, []);
-
-    // ฟังก์ชันออกจากระบบ
-    const handleLogout = () => {
-        localStorage.removeItem("token"); // ลบ token ออกจาก localStorage
-        setIsLoggedIn(false); // อัปเดต state
-        window.location.href = "/login"; // รีไดเร็กไปหน้าเข้าสู่ระบบ
-    };
+        console.log("🔍 isLoggedIn:", isLoggedIn); // ✅ ตรวจสอบค่า isLoggedIn
+    }, [isLoggedIn]);
 
     return (
         <div
@@ -47,13 +35,13 @@ function navbar() {
                     <NavbarLink href="/#home" label="หน้าแรก" />
                     <NavbarLink href="/#about" label="เกี่ยวกับเรา" />
                     <NavbarLink href="/#employee" label="พนักงานคลินิค" />
-                    
+
                     <Link href="/productAndService" className="link link-hover text-black1 hover:text-gray1 hover:decoration-gray1 focus:text-pink1 focus:underline focus:decoration-pink1">สินค้าและบริการ</Link>
 
                     <Link href="/promotion" className="link link-hover text-black1 hover:text-gray1 hover:decoration-gray1 focus:text-pink1 focus:underline focus:decoration-pink1">โปรโมชั่น</Link>
 
                     <Link href="/result" className="link link-hover text-black1 hover:text-gray1 hover:decoration-gray1 focus:text-pink1 focus:underline focus:decoration-pink1">ผลลัพธ์ลูกค้า</Link>
-                    
+
                     <NavbarLink href="/#contact-us" label="ติดต่อเรา" />
                 </ul>
             </div>
@@ -84,7 +72,7 @@ function navbar() {
                         <li><Link href="/account/cart">ตะกร้าของฉัน</Link></li>
                         {/* เปลี่ยนจาก เข้าสู่ระบบ -> ออกจากระบบ */}
                         {isLoggedIn ? (
-                            <li onClick={handleLogout} className="cursor-pointer hover:text-gray-400">ออกจากระบบ</li>
+                            <li className="hover:text-gray-400">ออกจากระบบ</li>
                         ) : (
                             <li><Link href="/login">เข้าสู่ระบบ</Link></li>
                         )}
@@ -112,7 +100,7 @@ function navbar() {
 
                 {/* เปลี่ยนปุ่ม เข้าสู่ระบบ เป็น ออกจากระบบ */}
                 {isLoggedIn ? (
-                    <button onClick={handleLogout} className="text-black1 hover:text-pink1">
+                    <button onClick={logout} className="text-black1 hover:text-pink1">
                         <LogOut strokeWidth={2.5} />
                     </button>
                 ) : (
@@ -146,4 +134,4 @@ const NavbarLink = ({ href, label }: { href: string; label: string }) => {
     );
 };
 
-export default navbar;
+export default Navbar;
