@@ -84,7 +84,7 @@ export default function productAndService() {
                 <div className='w-full ml-10'>
                     <Search searchText={searchText} setSearchText={setSearchText} />
 
-                    <div className='bg-slate-50 my-5 rounded-lg drop-shadow-lg'>
+                    <div className='bg-slate-50 my-5 border rounded-lg drop-shadow-lg'>
                         <div className='py-3'>
                             <div className='flex flex-row justify-between mx-10 items-center'>
                                 <h3 className='text-gray1'>แสดงผลลัพธ์ทั้งหมด "สินค้าและบริการ"</h3>
@@ -124,7 +124,7 @@ export default function productAndService() {
                             {/* ปุ่มเปลี่ยนหน้า */}
                             <div className="flex justify-center mt-6">
                                 <button
-                                    className={`px-4 py-2 mx-1 border text-blue1 rounded-md ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+                                    className={`px-4 py-2 mx-1 border border-blue1 text-blue1 rounded-md ${currentPage === 1 ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
                                         }`}
                                     onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                                     disabled={currentPage === 1}
@@ -134,7 +134,7 @@ export default function productAndService() {
                                 {Array.from({ length: totalPages }, (_, i) => (
                                     <button
                                         key={i}
-                                        className={`px-4 py-2 mx-1 border text-blue1 rounded-md ${currentPage === i + 1 ? "bg-gray-300" : "hover:bg-gray-200"
+                                        className={`px-4 py-2 mx-1 border border-blue1 text-white rounded-md ${currentPage === i + 1 ? "bg-blue1" : "hover:bg-blue-600"
                                             }`}
                                         onClick={() => setCurrentPage(i + 1)}
                                     >
@@ -142,7 +142,7 @@ export default function productAndService() {
                                     </button>
                                 ))}
                                 <button
-                                    className={`px-4 py-2 mx-1 border text-blue1 rounded-md ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+                                    className={`px-4 py-2 mx-1 border border-blue1 text-blue1 rounded-md ${currentPage === totalPages ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
                                         }`}
                                     onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                                     disabled={currentPage === totalPages}

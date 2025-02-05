@@ -10,7 +10,7 @@ interface searchProps {
 export default function Sreach({setSearchText, searchText} : searchProps) {
     return (
         <div className='w-full h-auto mt-5'>
-            <div className='bg-slate-50 flex justify-center items-center h-full py-4 px-10 md:px-10 border-y border-slate-50 rounded-md bg-fixed drop-shadow-md'>
+            <div className='bg-slate-50 flex justify-center items-center h-full py-4 px-10 md:px-10 border rounded-md bg-fixed drop-shadow-md'>
                 <input
                     id="search"
                     name="search"

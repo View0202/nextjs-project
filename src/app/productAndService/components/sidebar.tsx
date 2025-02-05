@@ -9,6 +9,8 @@ interface sidebarProps {
 }
 
 export default function sidebar({ onFilter }: sidebarProps) {
+    const router = useRouter();
+
     const [ProductDropdown, setProductDropdown] = useState(true);
     const [ServiceDropdown, setServiceDropdown] = useState(true);
     const [isOpen, setIsOpen] = useState(true); // สำหรับควบคุม sidebar
@@ -43,7 +45,7 @@ export default function sidebar({ onFilter }: sidebarProps) {
                 <span className="ml-2">คัดกรอง</span>
             </button>
 
-            <aside className="fixed inset-y-0 left-0 w-1/4 lg:w-1/4 h-full border-l no-scrollbar overflow-y-auto border-gray-200 bg-white transform transition-transform duration-300 ease-in-out z-50 md:z-20 lg:static lg:translate-x-0 -translate-x-full rounded-md drop-shadow-md">
+            <aside className="fixed inset-y-0 left-0 w-1/4 lg:w-1/4 h-full border no-scrollbar overflow-y-auto border-gray-200 bg-white transform transition-transform duration-300 ease-in-out z-50 md:z-20 lg:static lg:translate-x-0 -translate-x-full rounded-md drop-shadow-md">
                 <div className='m-5'>
                     <div className="text-start flex flex-col mx-2">
                         <div className='flex flex-col'>
@@ -56,7 +58,7 @@ export default function sidebar({ onFilter }: sidebarProps) {
                                     <h1 className="flex items-center gap-2" >
                                         <ShoppingBasket size={16} color="#EC407A" />
                                         <span className="font-semibold">สินค้า</span>
-                                        <ChevronDown className={`ml-auto w-4 h-4 transform ${ProductDropdown ? "rotate-180" : "rotate-180"}`} />
+                                        <ChevronDown className={`ml-auto w-4 h-4 transform ${ProductDropdown ? "rotate-180" : "rotate-0"}`} />
                                     </h1>
                                 </button>
                                 {ProductDropdown && (
@@ -116,6 +118,15 @@ export default function sidebar({ onFilter }: sidebarProps) {
                         {/* <div className=' items-center'>
                             <PriceFilter />
                         </div> */}
+
+                        <div className="divider text-gray1">หรือ</div>
+
+                        <button
+                            className="text-md block py-2 px-3 rounded-md border border-gray-300 font-light transition text-black1 text-center text-sm hover:bg-pink1 hover:text-white focus:text-slate-50 focus:bg-pink1"
+                            onClick={() => router.push("/booking")} // เมื่อคลิก นำทางไปหน้า /booking
+                        >
+                            ปฏิทินการจองคิว
+                        </button>
 
                     </div>
                 </div>
