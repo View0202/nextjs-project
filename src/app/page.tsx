@@ -19,6 +19,7 @@ import "swiper/css/pagination";
 import 'swiper/css/navigation';
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
+
 const CenteredDiv = styled.div`
   display: flex;
   justify-content: center;

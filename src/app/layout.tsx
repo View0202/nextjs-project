@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import AuthProvider from "./components/SessionProvider";
 
 import { HeartProvider } from "./context/heartContext";
 
@@ -33,12 +34,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <HeartProvider>
-        <Navbar />
+        <AuthProvider>
+          <HeartProvider>
+            <Navbar />
 
-        {children}
-        </HeartProvider>
-
+            {children}
+          </HeartProvider>
+        </AuthProvider>
         <Footer />
       </body>
     </html>
