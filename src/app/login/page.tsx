@@ -1,71 +1,55 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-
 import { CircleUserRound, LockKeyhole } from 'lucide-react';
 
-// interface Login {
-//     email: string
-//     password: string
-// }
-
-export default function login() {
+export default function Login() {
     const [loading, setLoading] = useState(false);
-    // const { setLoggedIn } = useContext(AuthContext);
+    const router = useRouter();
 
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const login = new FormData(e.currentTarget);
-        const JsonData = {
-            email: login.get("email") as string,
-            password: login.get("password") as string,
-        };
+        setLoading(true);
 
-        fetch('https://dummyjson.com/auth/login', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ JsonData }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                //console.log("API Response:", data);
-                setLoading(false);
-                if (data.status == "ok") {
-                    Swal.fire({
-                        icon: "success",
-                        title: "เข้าสู่ระบบสำเร็จ",
-                        text: "ยินดีต้อนรับ!",
-                        confirmButtonColor: "#13C648",
-                    });
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "เข้าสู่ระบบไม่สำเร็จ",
-                        text: "โปรดตรวจสอบชื่อผู้ใช้หรือรหัสผ่าน",
-                        confirmButtonColor: "#FF2D47",
-                    });
-                    //console.log(data.status)
-                }
+        const loginData = new FormData(e.currentTarget);
+        const username = loginData.get("username") as string;
+        const password = loginData.get("password") as string;
 
-            })
-            .catch((error) => {
-                setLoading(false);
-                Swal.fire({
-                    icon: "error",
-                    title: "ข้อผิดพลาด",
-                    text: "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้",
-                    confirmButtonColor: "#FF2D47",
-                });
-                //console.error("Error:", error);
+        const res = await signIn("credentials", {
+            redirect: false,
+            username,
+            password,
+        });
+
+        setLoading(false);
+
+        if (res?.error) {
+            Swal.fire({
+                icon: "error",
+                title: "เข้าสู่ระบบไม่สำเร็จ",
+                text: res.error,
+
             });
 
+        } else {
+            Swal.fire({
+                icon: "success",
+                title: "เข้าสู่ระบบสำเร็จ",
+                text: "ยินดีต้อนรับ!",
+            }).then(() => {
+                router.push("/"); // กลับไปหน้าแรกหลังจากล็อกอิน
+            });
+        }
+        console.log("🔍 Debug Username:", username); //ตรวจสอบค่า username
+        console.log("🔍 Debug Password:", password); //ตรวจสอบค่า password
     };
-
 
     return (
         <>
-            <div className="hero min-h-screen w-full bg-white1 bg-center" style={{ backgroundImage: "url('/images/login/bg-login.png')" }}>
+            <div className="hero min-h-screen w-full bg-center" style={{ backgroundImage: "url('/images/login/bg-login.png')" }}>
                 <div className="w-1/3 mt-10">
                     <div className='justify-center text-center'>
                         <h1 className="text-6xl font-bold text-black1">
@@ -90,18 +74,18 @@ export default function login() {
                                 <div className="sm:mx-auto sm:w-full sm:max-w-sm sm:my-3">
                                     <form className="space-y-3" onSubmit={handleLogin}>
                                         <div>
-                                            <label htmlFor="email" className="block text-sm/6 font-medium text-black1 text-start">
+                                            <label htmlFor="username" className="block text-sm/6 font-medium text-black1 text-start">
                                                 ชื่อผู้ใช้
                                             </label>
                                             <div className="mt-1">
                                                 <div className="relative">
                                                     <CircleUserRound size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black1 " />
                                                     <input
-                                                        id="email"
-                                                        name="email"
+                                                        id="username"
+                                                        name="username"
                                                         type="text"
                                                         required
-                                                        autoComplete="email"
+                                                        autoComplete="username"
                                                         className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6 hover:bg-white1"
                                                     />
                                                 </div>
@@ -174,7 +158,10 @@ export default function login() {
                                         </div>
 
                                         <div>
-                                            <button type="submit" disabled={loading} className="flex w-full justify-center rounded-md bg-pink1 px-3 py-1.5 text-sm/6 font-semibold text-white1 shadow-sm hover:bg-pink1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink1">
+                                            <button 
+                                            type="submit" 
+                                            disabled={loading} 
+                                            className="flex w-full justify-center rounded-md bg-pink1 px-3 py-1.5 text-sm/6 font-semibold text-white1 shadow-sm hover:bg-pink1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink1">
                                                 {loading ? "กำลังโหลด..." : "เข้าสู่ระบบ"}
                                             </button>
                                         </div>

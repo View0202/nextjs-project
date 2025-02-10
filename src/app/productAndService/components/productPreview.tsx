@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import Star from '@/app/components/star';
 import { useRouter } from "next/navigation";
 import { useHeart } from "../../context/heartContext";
-
 import { Heart } from 'lucide-react';
+import { useSession, signIn } from "next-auth/react";
+
 
 interface ProductPreviewProps {
     ID: number;
@@ -18,8 +19,8 @@ interface ProductPreviewProps {
 
 // const ProductPreview: React.FC<ProductPreviewProps> = () => {
 export default function ProductPreview({ ID, name, price, image, subtitle }: ProductPreviewProps) {
-
     const router = useRouter();
+    const { data: session } = useSession();
     const { addToHeart } = useHeart();
 
     const [isClicked, setIsClicked] = useState(false);
@@ -34,23 +35,13 @@ export default function ProductPreview({ ID, name, price, image, subtitle }: Pro
 
 
     const handleBook = (ID: number) => {
-        const token = localStorage.getItem("token");
-        if (!ID) {
-            {
-                //console.error("ID is missing!");
-            }
-            router.push(`/booking/id=${ID}`);
-        }
-        // นำทางไปยัง `/booking/[ID]` พร้อมกับส่งข้อมูล customer ใน query
-
-        if (!token) {
-            {
-                alert("please login!");
-            }
-            router.push(`../login`);
+        if (!session) {
+            // ✅ ถ้ายังไม่ได้ล็อกอิน ให้ไปที่หน้า login ของ NextAuth
+            signIn();
+        } else {
+            router.push(`/booking/${ID}`); // ✅ ล็อกอินแล้วให้ไปหน้าจอง
         }
     };
-
 
     return (
         <>
