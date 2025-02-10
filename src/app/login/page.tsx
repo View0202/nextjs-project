@@ -174,7 +174,7 @@ export default function Login() {
                                             </a>
                                         </div>
                                         <div className="text-sm">
-                                            <a href="/newAccount" className="font-semibold text-pink1 hover:text-gray1">
+                                            <a href="/signup" className="font-semibold text-pink1 hover:text-gray1">
                                                 ลงทะเบียน
                                             </a>
                                         </div>

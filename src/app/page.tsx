@@ -412,21 +412,6 @@ export default function Home() {
                                 1280: { slidesPerView: 1 },
                             }}
                         >
-                            {/* <SwiperSlide>
-                                <div
-                                    className="w-full h-80 bg-center bg-no-repeat"
-                                    style={{
-                                        backgroundImage: "url('/images/promotion/promotion_treatment.png')",
-                                        backgroundSize: "cover",
-                                    }}
-                                >
-                                    <div className="text-start w-fit p-5">
-                                        <p className="text-base text-black1"></p>
-                                    </div>
-                                </div>
-                            </SwiperSlide> */}
-
-
                             <SwiperSlide>
                                 <div
                                     className="w-full h-80 bg-center bg-no-repeat"
@@ -477,6 +462,7 @@ export default function Home() {
                                 ลูกค้าของเรา
                             </h1>
                         </div>
+
                         <Swiper
                             pagination={true}
                             modules={[Pagination, Autoplay]}
@@ -538,6 +524,7 @@ export default function Home() {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+
                     </div>
                     <div className="w-1/2 h-[400px] flex-row bg-center">
                         <div className="h-[400px] flex-row bg-center rounded-r-lg" style={{ backgroundImage: "url('/images/About.png')" }}>
@@ -548,9 +535,9 @@ export default function Home() {
             </div>
 
             {/* ติดต่อเรา */}
-            <div className="m-10">
+            <div className="m-10" id="contact-us">
                 <div className="flex flex-row items-center justify-center space-x-0">
-                    <div className="container" id="contact-us">
+                    <div className="container">
                         <div className="flex flex-col items-center space-y-2">
                             <a className="text-black1 text-sm">บริการ</a>
                             <a className="text-black1 text-2xl font-bold">ติดต่อเรา</a>

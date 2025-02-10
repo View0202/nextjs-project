@@ -5,7 +5,8 @@ import { useAuth } from "../context/authContext";
 import Link from "next/link";
 import { ScanFace, Heart, ShoppingBag, LogIn, CircleUserRound, AlignRight } from "lucide-react";
 import { useHeart } from "../context/heartContext";
-import { useSession } from "next-auth/react"; // ✅ ใช้ session เพื่อตรวจสอบสถานะ
+import { useSession } from "next-auth/react"; //ใช้ session เพื่อตรวจสอบสถานะ
+import { Link as ScrollLink } from "react-scroll";
 
 
 export default function Navbar() {
@@ -13,7 +14,7 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { heartCount, resetHeartCount } = useHeart();
     const { logout } = useAuth();
-    const { data: session } = useSession(); // ✅ ดึง session
+    const { data: session } = useSession(); //ดึง session
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -66,13 +67,29 @@ export default function Navbar() {
                         <div className="flex justify-center items-center mx-10">
                             <img src="/images/Logo.png" alt="Logo" />
                         </div>
+
                         <li><Link href="/">หน้าแรก</Link></li>
-                        <li><Link href="/about">เกี่ยวกับเรา</Link></li>
-                        <li><Link href="/employee">พนักงานคลินิค</Link></li>
+
+                        <li>
+                            <ScrollLink to="about" smooth={true} duration={500} offset={-150}>
+                                เกี่ยวกับเรา
+                            </ScrollLink>
+                        </li>
+
+                        <li>
+                            <ScrollLink to="employee" smooth={true} duration={500}>
+                                พนักงานคลินิค
+                                </ScrollLink>
+                        </li>
+
                         <li><Link href="/productAndService">สินค้าและบริการ</Link></li>
                         <li><Link href="/promotion">โปรโมชั่น</Link></li>
                         <li><Link href="/result">ผลลัพธ์ลูกค้า</Link></li>
-                        <li className="border-b-2"><Link href="/contact">ติดต่อเรา</Link></li>
+
+                        <li className="border-b-2">
+                            <ScrollLink to="contact-us" smooth={true} duration={500}>ติดต่อเรา</ScrollLink>
+                        </li>
+
                         <li><Link href="/account/estimate">ประเมินใบหน้า</Link></li>
                         <li><Link href="/account/favorites">รายการโปรด</Link></li>
                         <li><Link href="/account/cart">ตะกร้าของฉัน</Link></li>
@@ -88,52 +105,8 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* <div className="navbar-end hidden lg:flex gap-5">
-                <Link href="/account/estimate" className="text-black1 hover:text-pink1">
-                    <ScanFace strokeWidth={2.5} />
-                </Link>
-
-                <Link href="/account/favorites" onClick={resetHeartCount} className="relative text-black1 hover:text-pink1">
-                    <Heart strokeWidth={2.5} className="w-6 h-6" />
-                    {heartCount > 0 && (
-                        <span className="absolute top-0 right-0 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                            {heartCount}
-                        </span>
-                    )}
-                </Link>
-
-                <Link href="/account/cart" className="text-black1 hover:text-pink1">
-                    <ShoppingBag strokeWidth={2.5} />
-                </Link>
-
-                {session?.user ? (
-                    <button
-                        onClick={toggleDropdown}
-                        className="text-black1 hover:text-pink1"
-                    >
-                        <CircleUserRound strokeWidth={2.5} />
-
-                        {isOpen && (
-                            <ul id="dropdown-user" className="absolute right-10 mt-1 w-52 bg-white border rounded-lg shadow-lg z-50">
-                                <li className="px-4 py-2 text-start hover:bg-gray-100 text-black1 cursor-pointer rounded-lg">
-                                    <a href="/account">บัญชีของฉัน</a>
-                                </li>
-                                <li className="px-4 py-2 text-start hover:bg-red-100 text-red-600 cursor-pointer rounded-lg" onClick={logout}>
-                                    ออกจากระบบ
-                                </li>
-                            </ul>
-                        )}
-                    </button>
-                ) : (
-                    <Link href="/login" className="text-black1 hover:text-pink1">
-                        <LogIn strokeWidth={2.5} />
-                    </Link>
-                )}
-
-            </div> */}
-
-            <div id="navbar-end" 
-            className="navbar-end hidden lg:flex gap-5">
+            <div id="navbar-end"
+                className="navbar-end hidden lg:flex gap-5">
                 {session?.user ? (
                     <>
                         {/* ScanFace */}
