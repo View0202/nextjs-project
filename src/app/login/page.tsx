@@ -43,13 +43,13 @@ export default function Login() {
                 router.push("/"); // กลับไปหน้าแรกหลังจากล็อกอิน
             });
         }
-        console.log("🔍 Debug Username:", username); // ✅ ตรวจสอบค่า username
-        console.log("🔍 Debug Password:", password); // ✅ ตรวจสอบค่า password
+        console.log("🔍 Debug Username:", username); //ตรวจสอบค่า username
+        console.log("🔍 Debug Password:", password); //ตรวจสอบค่า password
     };
 
     return (
         <>
-            <div className="hero min-h-screen w-full bg-white1 bg-center" style={{ backgroundImage: "url('/images/login/bg-login.png')" }}>
+            <div className="hero min-h-screen w-full bg-center" style={{ backgroundImage: "url('/images/login/bg-login.png')" }}>
                 <div className="w-1/3 mt-10">
                     <div className='justify-center text-center'>
                         <h1 className="text-6xl font-bold text-black1">
@@ -158,7 +158,10 @@ export default function Login() {
                                         </div>
 
                                         <div>
-                                            <button type="submit" disabled={loading} className="flex w-full justify-center rounded-md bg-pink1 px-3 py-1.5 text-sm/6 font-semibold text-white1 shadow-sm hover:bg-pink1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink1">
+                                            <button 
+                                            type="submit" 
+                                            disabled={loading} 
+                                            className="flex w-full justify-center rounded-md bg-pink1 px-3 py-1.5 text-sm/6 font-semibold text-white1 shadow-sm hover:bg-pink1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink1">
                                                 {loading ? "กำลังโหลด..." : "เข้าสู่ระบบ"}
                                             </button>
                                         </div>

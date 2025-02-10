@@ -12,11 +12,11 @@ export default withAuth({
 export function middleware(req: NextRequest) {
   const token = req.cookies.get('authToken')?.value; // ตรวจสอบ token จาก cookies
 
-  const protectedRoutes = ['/account/estimate', '/account/favorites', '/account/cart']; // หน้าที่ต้องล็อกอินก่อนเข้า
+  //const protectedRoutes = ['/account/estimate', '/account/favorites', '/account/cart']; // หน้าที่ต้องล็อกอินก่อนเข้า
 
-  if (protectedRoutes.includes(req.nextUrl.pathname) && !token) {
-      return NextResponse.redirect(new URL('/login', req.url)); // ถ้าไม่มี token ให้ไปที่หน้าล็อกอิน
-  }
+  // if (protectedRoutes.includes(req.nextUrl.pathname) && !token) {
+  //     return NextResponse.redirect(new URL('/login', req.url)); // ถ้าไม่มี token ให้ไปที่หน้าล็อกอิน
+  // }
 
   return NextResponse.next();
 }
