@@ -170,7 +170,7 @@ export default function Home() {
 
             {/* เกี่ยวกับเรา */}
             <div className="mx-10 mt-10" id="about">
-                <div className="flex flex-row items-center justify-center space-x-0 px-20 drop-shadow-md">
+                <div className="flex flex-row items-center justify-center space-x-0 mx-20 shadow-md">
                     <div className="w-1/2 h-[400px] flex-row bg-center rounded-l-lg">
                         <div className="h-[400px] flex-row bg-center rounded-l-lg" style={{ backgroundImage: "url('/images/About.png')" }}>
 
@@ -212,7 +212,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="mx-20 bg-slate-50 my-3 rounded-md shadow-lg">
+                    <div className="mx-20 bg-slate-50 my-3 rounded-md shadow-md">
                         <Swiper
                             modules={[Pagination, Autoplay]}
                             pagination={{ clickable: true, el: ".custom-pagination" }}
@@ -362,16 +362,16 @@ export default function Home() {
                         <a className="text-black1 text-2xl font-bold">พนักงานของเรา</a>
                     </div>
                     <div>
-                        <div className="mx-20 bg-slate-50 my-3 rounded-md shadow-lg">
+                        <div className="mx-20 bg-slate-50 my-3 rounded-md shadow-md">
                             <div className="mx-auto max-w-xl px-5 py-10 sm:px-6 lg:max-w-7xl lg:px-10 flex justify-center items-center">
                                 <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-20">
                                     {employees.map((employee) => (
-                                        <div className="bg-[#FFFFFF] p-5 rounded-lg drop-shadow-md">
+                                        <div className="bg-[#FFFFFF] p-5 rounded-md shadow-md">
                                             <a key={employee.id} className="group">
                                                 <img
                                                     alt={employee.imageAlt}
                                                     src={employee.imageSrc}
-                                                    className="aspect-square w-60 rounded-lg bg-gray1-200 object-cover"
+                                                    className="aspect-square w-60 rounded-md bg-gray1-200 object-cover"
                                                 />
                                                 <h3 className="mt-4 text-lg text-black1">{employee.name}</h3>
                                                 <p className="mt-1 text-sm font-medium text-gray1">{employee.imageAlt}</p>
@@ -452,7 +452,7 @@ export default function Home() {
 
             {/* ความคิดเห็น */}
             <div className="m-10" id="review">
-                <div className="flex flex-row items-center justify-center space-x-0 px-20 mt-10 drop-shadow-md">
+                <div className="flex flex-row items-center justify-center space-x-0 mx-20 mt-10 shadow-md">
                     <div className="w-1/2 h-[400px] flex flex-col bg-slate-50 bg-center items-center justify-center rounded-l-lg">
                         <div className="w-1/2 text-center space-y-2 mt-3">
                             <p className="text-base text-black1">
@@ -480,7 +480,7 @@ export default function Home() {
                         >
                             {dataResult.map((item, index) => (
                                 <SwiperSlide className="flex justify-start pt-20" key={index}>
-                                    <div className="bg-[#FFFFFF] p-4 w-60 lg:w-3/5 md:w-72 drop-shadow-md border border-gray1-300 rounded-lg mx-auto">
+                                    <div className="bg-[#FFFFFF] p-4 w-60 lg:w-3/5 md:w-72 shadow-md border border-gray1-300 rounded-md mx-auto">
                                         <article className="flex max-w-xl flex-col items-start justify-between gap-1">
                                             <div className="group relative w-full">
                                                 <h3 className="text-xl font-semibold text-black1 justify-items-start">
@@ -543,9 +543,9 @@ export default function Home() {
                             <a className="text-black1 text-2xl font-bold">ติดต่อเรา</a>
                         </div>
 
-                        <div className='mt-3'>
-                            <div className="grid sm:grid-cols-1 md:flex md:items-center md:justify-start gap-10 mx-20">
-                                <div className="text-start inline-block flex-col gap-1 bg-slate-50 rounded-md p-3 shadow-md">
+                        <div className='mt-3 mx-20 bg-slate-50 rounded-md shadow-md'>
+                            <div className="grid sm:grid-cols-1 md:flex md:items-center md:justify-start gap-10 mx-5 pt-5">
+                                <div className="text-start inline-block flex-col gap-1 bg-white rounded-md p-3 shadow-md">
                                     <h1 className="flex flex-row gap-2 text-xl font-bold text-black1 items-center">
                                         <Phone size={20} fill='#21211F' />
                                         เบอร์โทรศัพท์
@@ -555,7 +555,7 @@ export default function Home() {
                                     </p>
                                 </div>
 
-                                <div className="text-start inline-block flex-col gap-1 bg-slate-50 rounded-md p-3 shadow-md">
+                                <div className="text-start inline-block flex-col gap-1 bg-white rounded-md p-3 shadow-md">
                                     <h1 className="flex flex-row gap-2 text-xl font-bold text-black1 items-center">
                                         <PiMapPinAreaFill size={24} />
                                         ที่อยู่
