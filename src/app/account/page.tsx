@@ -46,7 +46,7 @@ export default function profile() {
             </div>
 
             <div className='w-full flex flex-row'>
-            <div className="container w-20 sm:w-20 lg:w-1/4 xl:w-1/4 mb-5 bg-[#FFFFFF] rounded-md shadow-md">
+            <div className="container w-20 sm:w-20 lg:w-1/4 xl:w-1/4 mb-5 bg-white rounded-md shadow-md">
                     <div className='m-5'>
                         <div className="flex min-w-0 gap-x-2 items-center">
                             <div className='flex flex-row items-center m-2 gap-3'>
@@ -94,8 +94,8 @@ export default function profile() {
                     <div className="px-5 sm:px-0">
                         <h3 className="text-lg/7 font-medium text-gray1">บัญชีของฉัน</h3>
                     </div>
-                    <div className='bg-slate-50 mt-3 rounded-lg'>
-                        <dl className="divide-y divide-gray1 mx-10">
+                    <div className='bg-slate-50 mt-3 rounded-lg py-5'>
+                        <dl className="divide-y divide-gray1 mx-5 px-10  bg-white rounded-md shadow-md">
                             <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray1">รูปโปรไฟล์</dt>
                                 <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0 flex items-center">รูปโปรไฟล์ช่วยปรับเปลี่ยนบัญชีของคุณ</dd>
@@ -136,7 +136,7 @@ export default function profile() {
                                 <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0"></dd>
                             </div>
 
-                            <div className="flex items-center justify-center py-3 bg-slate-50">
+                            <div className="flex items-center justify-center py-3 bg-white">
                                 <ModalProfile />
                             </div>
                         </dl>

@@ -4,7 +4,7 @@ import Star from '@/app/components/star';
 import { useRouter } from "next/navigation";
 import { useHeart } from "../../context/heartContext";
 import { Heart } from 'lucide-react';
-import { useSession, signIn } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react"; // นับว่ามีการใช้ react router ด้วย
 
 
 interface ProductPreviewProps {
@@ -36,10 +36,10 @@ export default function ProductPreview({ ID, name, price, image, subtitle }: Pro
 
     const handleBook = (ID: number) => {
         if (!session) {
-            // ✅ ถ้ายังไม่ได้ล็อกอิน ให้ไปที่หน้า login ของ NextAuth
+            // ถ้ายังไม่ได้ล็อกอิน ให้ไปที่หน้า login ของ NextAuth
             signIn();
         } else {
-            router.push(`/booking/${ID}`); // ✅ ล็อกอินแล้วให้ไปหน้าจอง
+            router.push(`/booking/${ID}`); // ล็อกอินแล้วให้ไปหน้าจอง
         }
     };
 
@@ -110,7 +110,6 @@ export default function ProductPreview({ ID, name, price, image, subtitle }: Pro
                                         >
                                             <Heart />
                                         </Link>
-
                                     </div>
                                 </form>
                             </section>

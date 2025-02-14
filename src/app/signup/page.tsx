@@ -41,7 +41,7 @@ export default function newAccount() {
                                                         type="name"
                                                         required
                                                         autoComplete="name"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -60,7 +60,7 @@ export default function newAccount() {
                                                         type="lname"
                                                         required
                                                         autoComplete="lname"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@ export default function newAccount() {
                                                         type="username"
                                                         required
                                                         autoComplete="username"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -98,7 +98,7 @@ export default function newAccount() {
                                                         type="email"
                                                         required
                                                         autoComplete="email"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -117,7 +117,7 @@ export default function newAccount() {
                                                         type="phone"
                                                         required
                                                         autoComplete="phone"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -136,7 +136,7 @@ export default function newAccount() {
                                                         type="date"
                                                         required
                                                         autoComplete="date"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -155,7 +155,7 @@ export default function newAccount() {
                                                         type="password"
                                                         required
                                                         autoComplete="current-password"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -174,7 +174,7 @@ export default function newAccount() {
                                                         type="password"
                                                         required
                                                         autoComplete="current-password"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
@@ -185,10 +185,10 @@ export default function newAccount() {
 
                                     <div className='mx-10'>
                                         <div className="flex items-center justify-between mt-3">
-                                            <a href="/login" className="flex w-24 justify-center bg-white1 text-gray1 px-2 py-1 rounded-md shadow transition outline-1 border-gray1 border-2 hover:bg-gray1 hover:text-white1 hover:border-gray1">
+                                            <a href="/login" className="flex w-24 justify-center bg-white1 text-gray1 px-2 py-1 rounded-md shadow transition outline-1 border-gray1 border-2 hover:bg-gray1 hover:text-white hover:border-gray1">
                                                 ยกเลิก
                                             </a>
-                                            <button type="submit" className="flex w-24 justify-center bg-white1 text-pink1 px-2 py-1 rounded-md shadow transition outline-1 border-pink1 border-2 hover:bg-pink1 hover:text-white1 hover:border-pink1">
+                                            <button type="submit" className="flex w-24 justify-center bg-white1 text-pink1 px-2 py-1 rounded-md shadow transition outline-1 border-pink1 border-2 hover:bg-pink1 hover:text-white hover:border-pink1">
                                                 ลงทะเบียน
                                             </button>
                                         </div>

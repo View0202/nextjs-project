@@ -86,7 +86,7 @@ export default function Login() {
                                                         type="text"
                                                         required
                                                         autoComplete="username"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6 hover:bg-white1"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6 hover:bg-white1"
                                                     />
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@ export default function Login() {
                                                         type="password"
                                                         required
                                                         autoComplete="current-password"
-                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-pink1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                                        className="block w-full pl-10 rounded-md bg-white1 px-3 py-1.5 text-gray1 outline outline-1 -outline-offset-1 outline-gray1 placeholder:text-gray1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                                     />
                                                 </div>
                                             </div>
