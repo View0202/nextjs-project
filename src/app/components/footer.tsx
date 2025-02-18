@@ -1,14 +1,25 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-
 import { Phone, ChevronRight, Facebook } from 'lucide-react';
 
-function footer() {
+const scrollToSection = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    const target = document.getElementById(sectionId);
+    if (target) {
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "center", // เซ็นเตอร์ตำแหน่งของ element ที่จะไป
+        });
+    }
+};
+
+export default function Footer() {
     return (
-        <footer className="footer w-full bg-[#FFFFFF];
-        text-black1 h-auto px-10 py-3 border-t border-gray1">
+        <footer className="footer w-full bg-[#FFFFFF] text-black1 h-auto px-10 py-3 border-t border-gray1">
             <div className="w-full flex items-center justify-between">
-                <aside className="w-full flex justify-items-center sm:justify-center md:justify-center xl:justify-start" >
+                <aside className="w-full flex justify-items-center sm:justify-center md:justify-center xl:justify-start">
                     <img src="/images/Logo.png" alt="Logo" className="w-60 h-12" />
                 </aside>
                 <div className="items-center gap-20 hidden lg:flex">
@@ -16,12 +27,24 @@ function footer() {
                         <div className="flex flex-col gap-2">
                             <div className="items-center space-x-2 inline-flex w-max">
                                 <ChevronRight size={16} />
-                                <Link href="/" className="link link-hover text-black1 hover:text-gray1 focus:text-pink1">หน้าแรก</Link>
+                                <Link
+                                    href="#home"
+                                    className="link link-hover text-black1 hover:text-gray1 focus:text-pink1"
+                                    onClick={(e) => scrollToSection(e, "home")}
+                                >
+                                    หน้าแรก
+                                </Link>
                             </div>
 
                             <div className="items-center space-x-2 inline-flex w-max">
                                 <ChevronRight size={16} />
-                                <Link href="/about" className="link link-hover text-black1 hover:text-gray1 focus:text-pink1">เกี่ยวกับเรา</Link>
+                                <Link
+                                    href="#about"
+                                    className="link link-hover text-black1 hover:text-gray1 focus:text-pink1"
+                                    onClick={(e) => scrollToSection(e, "about")}
+                                >
+                                    เกี่ยวกับเรา
+                                </Link>
                             </div>
                         </div>
                     </nav>
@@ -30,7 +53,13 @@ function footer() {
                         <div className="flex flex-col gap-2">
                             <div className="items-center space-x-2 inline-flex w-max">
                                 <ChevronRight size={16} />
-                                <Link href="/employee" className="link link-hover text-black1 hover:text-gray1 focus:text-pink1">พนักงานคลินิค</Link>
+                                <Link
+                                    href="#employee"
+                                    className="link link-hover text-black1 hover:text-gray1 focus:text-pink1"
+                                    onClick={(e) => scrollToSection(e, "employee")}
+                                >
+                                    พนักงานคลินิค
+                                </Link>
                             </div>
 
                             <div className="items-center space-x-2 inline-flex w-max">
@@ -69,9 +98,6 @@ function footer() {
                     </nav>
                 </div>
             </div>
-
         </footer>
     );
 }
-
-export default footer;

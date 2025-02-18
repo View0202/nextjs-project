@@ -25,7 +25,7 @@ export const authOptions = {
         });
 
         if (!user) {
-          console.log(user);
+          //console.log(user);
           throw new Error("ไม่พบผู้ใช้");
         }
 
@@ -33,9 +33,9 @@ export const authOptions = {
           credentials.password,
           user.password
         );
-        console.log("🛠 รหัสผ่านที่ป้อน:", credentials.password);
-        console.log("🛠 รหัสผ่านที่เก็บในฐานข้อมูล:", user.password);
-        console.log("🛠 bcrypt.compare() Result:", isValid);
+        //console.log("🛠 รหัสผ่านที่ป้อน:", credentials.password);
+        //console.log("🛠 รหัสผ่านที่เก็บในฐานข้อมูล:", user.password);
+        //console.log("🛠 bcrypt.compare() Result:", isValid);
 
         if (!isValid) {
           throw new Error("รหัสผ่านไม่ถูกต้อง");

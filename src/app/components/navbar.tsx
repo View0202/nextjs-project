@@ -160,7 +160,7 @@ export default function Navbar() {
     );
 }
 
-// ✅ แยกฟังก์ชัน Link ที่ scroll ไปยัง section
+//แยกฟังก์ชัน Link ที่ scroll ไปยัง section
 const NavbarLink = ({ href, label }: { href: string; label: string }) => {
     return (
         <Link
@@ -180,4 +180,4 @@ const NavbarLink = ({ href, label }: { href: string; label: string }) => {
         </Link>
 
     );
-}
+};

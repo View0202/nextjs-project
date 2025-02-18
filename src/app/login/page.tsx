@@ -43,8 +43,8 @@ export default function Login() {
                 router.push("/"); // กลับไปหน้าแรกหลังจากล็อกอิน
             });
         }
-        console.log("🔍 Debug Username:", username); //ตรวจสอบค่า username
-        console.log("🔍 Debug Password:", password); //ตรวจสอบค่า password
+        //console.log("🔍 Debug Username:", username); //ตรวจสอบค่า username
+        //console.log("🔍 Debug Password:", password); //ตรวจสอบค่า password
     };
 
     return (
