@@ -79,7 +79,7 @@ export default function Navbar() {
                         <li>
                             <ScrollLink to="employee" smooth={true} duration={500}>
                                 พนักงานคลินิค
-                                </ScrollLink>
+                            </ScrollLink>
                         </li>
 
                         <li><Link href="/productAndService">สินค้าและบริการ</Link></li>
