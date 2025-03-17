@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import Noitems from '@/app/components/noitems';
@@ -16,9 +16,15 @@ interface FavoriteProps {
     image: string
 }
 
+interface Customer {
+    name: string;
+    surname: string;
+}
+
 const Favorite: React.FC<FavoriteProps> = ({ id, name, price, image }: FavoriteProps) => {
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [customer, setCustomer] = useState<Customer | null>(null);
 
     const pageUrl = '/';
     const accountURL = '/account';
@@ -75,6 +81,13 @@ const Favorite: React.FC<FavoriteProps> = ({ id, name, price, image }: FavoriteP
     // คำนวณจำนวนเพจทั้งหมด
     const totalPages = Math.ceil(items.length / pageSize);
 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/customer")
+            .then((res) => res.json())
+            .then((data) => setCustomer(data))
+            .catch((err) => console.error("Error fetching customer data:", err));
+    }, []);
+
     return (
         <>
             <div className="relative w-full h-[50vh] hero bg-white1 bg-center">
@@ -115,7 +128,9 @@ const Favorite: React.FC<FavoriteProps> = ({ id, name, price, image }: FavoriteP
                                     className="inline-block size-10 rounded-full ring-1 ring-white1"
                                 />
                                 <div className="flex-auto">
-                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">ชื่อผู้ใช้</p>
+                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">
+                                        {customer ? `${customer.name} ${customer.surname}` : '-'}
+                                    </p>
                                 </div>
                             </div>
                         </div>

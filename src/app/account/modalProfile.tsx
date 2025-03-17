@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { PencilLine} from 'lucide-react';
+
 import { PiUserCircleFill } from "react-icons/pi";
 
+interface Customer {
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    age: string;
+}
+
 export default function modalProfile() {
+
+    const [loading, setLoading] = useState(false);
+
+    const [customer, setCustomer] = useState<Customer>({
+        name: '',
+        surname: '',
+        email: '',
+        phone: '',
+        age: ''
+    });
+
+    useEffect(() => {
+        setLoading(true); // เริ่มโหลดข้อมูล
+        fetch("http://localhost:8080/api/customer")
+          .then((response) => response.json())
+          .then((data) => setCustomer(data))
+          .catch((error) => console.error("Error fetching customer data:", error))
+          .finally(() => setLoading(false)); // หยุดโหลดไม่ว่าผลจะเป็นอะไร
+      }, []);
+    
+
     const openModal = () => {
         const dialog = document.getElementById('modalProfile') as HTMLDialogElement;
         if (dialog) {
@@ -52,25 +82,25 @@ export default function modalProfile() {
                                     type="text"
                                     required
                                     autoComplete="name"
-                                    placeholder="ชื่อ"
-                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray1 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                    placeholder={customer.name || '-'}
+                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray-300 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label htmlFor="lname" className="block text-sm/6 font-medium text-black1 text-start">
+                            <label htmlFor="surname" className="block text-sm/6 font-medium text-black1 text-start">
                                 นามสกุล
                             </label>
                             <div className="mt-1">
                                 <input
-                                    id="lname"
-                                    name="lname"
+                                    id="surname"
+                                    name="surname"
                                     type="text"
                                     required
-                                    autoComplete="lname"
-                                    placeholder="นามสกุล"
-                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray1 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                    autoComplete="surname"
+                                    placeholder={customer.surname || '-'}
+                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray-300 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                 />
                             </div>
                         </div>
@@ -88,8 +118,8 @@ export default function modalProfile() {
                                     type="email"
                                     required
                                     autoComplete="email"
-                                    placeholder="อีเมล์"
-                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray1 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                    placeholder={customer.email || '-'}
+                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray-300 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                 />
                             </div>
                         </div>
@@ -107,24 +137,24 @@ export default function modalProfile() {
                                     type="phone"
                                     required
                                     autoComplete="phone"
-                                    placeholder="เบอร์โทรศัพท์"
-                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray1 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                    placeholder={customer.phone || '-'}
+                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray-300 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                 />
                             </div>
                         </div>
 
                         <div>
-                            <label htmlFor="date" className="block text-sm/6 font-medium text-black1 text-start">
+                            <label htmlFor="age" className="block text-sm/6 font-medium text-black1 text-start">
                                 วัน เดือน ปีที่เกิด
                             </label>
                             <div className="mt-1">
                                 <input
-                                    id="date"
-                                    name="date"
-                                    type="date"
+                                    id="age"
+                                    name="age"
+                                    type="age"
                                     required
-                                    autoComplete="date"
-                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray1 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                    autoComplete={customer.age || '-'}
+                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray-300 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                 />
                             </div>
                         </div>
@@ -142,7 +172,7 @@ export default function modalProfile() {
                                     type="password"
                                     required
                                     autoComplete="current-password"
-                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray1 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray-300 placeholder:bg-slate-50 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                 />
                             </div>
                         </div>
@@ -158,7 +188,7 @@ export default function modalProfile() {
                                     type="password"
                                     required
                                     autoComplete="current-password"
-                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-pink1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-pink1 placeholder:bg-white1 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-pink1 sm:text-sm/6"
+                                    className="block w-full rounded-md bg-slate-50 px-3 py-1.5 text-gray1 outline outline-1 outline-offset-1 outline-gray-200 placeholder:text-gray-300 placeholder:bg-slate-50  focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-gray1 sm:text-sm/6"
                                 />
                             </div>
                         </div>
@@ -170,8 +200,10 @@ export default function modalProfile() {
 
                         <form method="dialog">
                             <button
+                            type="submit" 
+                            disabled={loading} 
                                 className="px-4 py-2 items-center text-slate-50 border bg-amber-400 border-amber-400 rounded-md hover:bg-amber-500 hover:border-amber-500 hover:text-slate-50">
-                                แก้ไขข้อมูล
+                                    {loading ? "กำลังโหลด..." : "แก้ไขข้อมูล"}
                             </button>
                         </form>
                     </div>

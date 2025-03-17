@@ -1,13 +1,20 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import Logout from '@/app/components/logout';
 
 import { Images, IdCard, ScanFace, Heart, ShoppingBag, History } from 'lucide-react';
 
+interface Customer {
+    name: string;
+    surname: string;
+}
+
 export default function coupon() {
+
+    const [customer, setCustomer] = useState<Customer | null>(null);
 
     const pageUrl = '/';
     const accountURL = '/account';
@@ -36,26 +43,31 @@ export default function coupon() {
             const fileInput = document.querySelector('#fileInput') as HTMLInputElement; // Input สำหรับไฟล์
             const file = fileInput?.files?.[0]; // ดึงไฟล์จาก input
             const text = document.querySelector('#textInput') as HTMLInputElement; // Input สำหรับข้อความ
-    
+
             if (file) formData.append('image', file); // เพิ่มรูปภาพใน FormData
             if (text?.value) formData.append('description', text.value); // เพิ่มข้อความใน FormData
-    
+
             // Fetch ไปยัง API
             const response = await fetch('/api/upload', {
                 method: 'POST',
                 body: formData, // ใช้ FormData เป็น body
             });
-    
+
             if (!response.ok) throw new Error('ส่งข้อมูลไม่สำเร็จ');
-    
+
             const result = await response.json();
             //console.log('✅ บันทึกสำเร็จ', result);
         } catch (error) {
             //console.error('❌ เกิดข้อผิดพลาด', error);
         }
     };
-    
-    
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/customer")
+            .then((res) => res.json())
+            .then((data) => setCustomer(data))
+            .catch((err) => console.error("Error fetching customer data:", err));
+    }, []);
 
     return (
         <>
@@ -97,7 +109,9 @@ export default function coupon() {
                                     className="inline-block size-10 rounded-full ring-1 ring-white1"
                                 />
                                 <div className="flex-auto">
-                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">ชื่อผู้ใช้</p>
+                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">
+                                    {customer ? `${customer.name} ${customer.surname}` : '-'}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -139,55 +153,55 @@ export default function coupon() {
                     <div className='bg-slate-50 mt-3 rounded-lg p-5'>
                         <div className='bg-[#FFFFFF] rounded-lg border shadow-lg'>
                             <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2">
-                            <div className="col-span-full md:col-span-1">
-    <div className="m-10 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-        {imagePreview ? (
-            <div className="flex justify-center items-center h-80">
-                <div className="text-center">
-                    <img
-                        src={imagePreview}
-                        alt="อัปโหลดใบหน้าของคุณ"
-                        className="mx-auto rounded-lg size-80 object-cover"
-                    />
-                    <button
-                        onClick={() => setImagePreview(null)}
-                        className="mt-5 px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600"
-                    >
-                        ลบรูปภาพ
-                    </button>
-                </div>
-            </div>
-        ) : (
-            <div className="flex justify-center items-center h-80">
-                <div className="text-center">
-                    <Images
-                        aria-hidden="true"
-                        className="mx-auto size-40 text-gray-300"
-                    />
-                    <div className="mt-4 flex text-sm/6 text-gray-600 justify-center">
-                        <label
-                            htmlFor="fileInput"
-                            className="relative cursor-pointer rounded-md bg-white font-semibold text-pink1 hover:text-pink-400"
-                        >
-                            <span>อัพโหลดใบหน้าของคุณ</span>
-                            <input
-                                id="fileInput"
-                                name="file-upload"
-                                type="file"
-                                className="sr-only"
-                                onChange={handleFileUpload}
-                            />
-                        </label>
-                        <p className="pl-1">หรือลากและวาง</p>
-                    </div>
-                    <p className="text-xs/5 text-gray-600">
-                        รองรับไฟล์ PNG, JPG, GIF ขนาดไม่เกิน 10MB
-                    </p>
-                </div>
-            </div>
-        )}
-    </div>
-</div>
+                                <div className="col-span-full md:col-span-1">
+                                    <div className="m-10 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                                        {imagePreview ? (
+                                            <div className="flex justify-center items-center h-80">
+                                                <div className="text-center">
+                                                    <img
+                                                        src={imagePreview}
+                                                        alt="อัปโหลดใบหน้าของคุณ"
+                                                        className="mx-auto rounded-lg size-80 object-cover"
+                                                    />
+                                                    <button
+                                                        onClick={() => setImagePreview(null)}
+                                                        className="mt-5 px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600"
+                                                    >
+                                                        ลบรูปภาพ
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="flex justify-center items-center h-80">
+                                                <div className="text-center">
+                                                    <Images
+                                                        aria-hidden="true"
+                                                        className="mx-auto size-40 text-gray-300"
+                                                    />
+                                                    <div className="mt-4 flex text-sm/6 text-gray-600 justify-center">
+                                                        <label
+                                                            htmlFor="fileInput"
+                                                            className="relative cursor-pointer rounded-md bg-white font-semibold text-pink1 hover:text-pink-400"
+                                                        >
+                                                            <span>อัพโหลดใบหน้าของคุณ</span>
+                                                            <input
+                                                                id="fileInput"
+                                                                name="file-upload"
+                                                                type="file"
+                                                                className="sr-only"
+                                                                onChange={handleFileUpload}
+                                                            />
+                                                        </label>
+                                                        <p className="pl-1">หรือลากและวาง</p>
+                                                    </div>
+                                                    <p className="text-xs/5 text-gray-600">
+                                                        รองรับไฟล์ PNG, JPG, GIF ขนาดไม่เกิน 10MB
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
 
 
                                 <div className="flex items-center">
@@ -214,11 +228,11 @@ export default function coupon() {
                                                 ยกเลิก
                                             </button>
                                             <button
-    className="px-4 py-2 text-white bg-green1 rounded-md hover:bg-green-600"
-    onClick={handleSubmit} // 🟢 เรียกใช้ฟังก์ชันเมื่อกดปุ่ม
->
-    ส่งข้อมูล
-</button>
+                                                className="px-4 py-2 text-white bg-green1 rounded-md hover:bg-green-600"
+                                                onClick={handleSubmit} // 🟢 เรียกใช้ฟังก์ชันเมื่อกดปุ่ม
+                                            >
+                                                ส่งข้อมูล
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

@@ -1,12 +1,17 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logout from '@/app/components/logout';
 import Table from './components/table';
 
 import { IdCard, ScanFace, Heart, ShoppingBag, History } from 'lucide-react';
+
+interface Customer {
+    name: string;
+    surname: string;
+}
 
 export default function cart() {
 
@@ -16,6 +21,15 @@ export default function cart() {
     const favoritesURL = '/account/favorites';
     const cartURL = '/account/cart';
     const historyURL = '/account/history';
+
+    const [customer, setCustomer] = useState<Customer | null>(null);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/customer")
+            .then((res) => res.json())
+            .then((data) => setCustomer(data))
+            .catch((err) => console.error("Error fetching customer data:", err));
+    }, []);
 
     return (
         <>
@@ -57,7 +71,9 @@ export default function cart() {
                                     className="inline-block size-10 rounded-full ring-1 ring-white1"
                                 />
                                 <div className="flex-auto">
-                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">ชื่อผู้ใช้</p>
+                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">
+                                        {customer ? `${customer.name} ${customer.surname}` : '-'}
+                                    </p>
                                 </div>
                             </div>
                         </div>

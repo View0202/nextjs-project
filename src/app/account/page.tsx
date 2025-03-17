@@ -1,12 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'next/image';
 import Link from "next/link";
 import ModalProfile from "./modalProfile";
 import Logout from "@/app/components/logout";
 
 import { IdCard, ScanFace, Heart, ShoppingBag, History } from 'lucide-react';
+
+interface Customer {
+    profile_image: string;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    age: string;
+}
 
 export default function profile() {
 
@@ -16,6 +25,15 @@ export default function profile() {
     const favoritesURL = '/account/favorites';
     const cartURL = '/account/cart';
     const historyURL = '/account/history';
+
+    const [customer, setCustomer] = useState<Customer | null>(null);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/customer")
+            .then((res) => res.json())
+            .then((data) => setCustomer(data))
+            .catch((err) => console.error("Error fetching customer data:", err));
+    }, []);
 
     return (
         <>
@@ -56,7 +74,8 @@ export default function profile() {
                                     className="inline-block size-10 rounded-full ring-1 ring-white1"
                                 />
                                 <div className="flex-auto">
-                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">ชื่อผู้ใช้</p>
+                                    <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">{customer ? `${customer.name} ${customer.surname}` : '-'}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -103,27 +122,27 @@ export default function profile() {
 
                             <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray1">ชื่อ</dt>
-                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0 flex items-center">ชื่อ</dd>
+                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0 flex items-center">{customer?.name || '-'}</dd>
                             </div>
 
                             <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray1">นามสกุล</dt>
-                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">นามสกุล</dd>
+                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">{customer?.surname || '-'}</dd>
                             </div>
 
                             <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray1">อีเมล์</dt>
-                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">อีเมล์</dd>
+                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">{customer?.email || '-'}</dd>
                             </div>
 
                             <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray1">เบอร์โทรศัพท์</dt>
-                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">เบอร์โทรศัพท์</dd>
+                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">{customer?.phone || '-'}</dd>
                             </div>
 
                             <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                 <dt className="text-sm/6 font-medium text-gray1">วัน เดือน ปีที่เกิด</dt>
-                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">วัน เดือน ปีที่เกิด</dd>
+                                <dd className="mt-1 text-sm/6 text-black1 sm:col-span-2 sm:mt-0">{customer?.age || '-'}</dd>
                             </div>
 
                             <div className="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
