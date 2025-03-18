@@ -34,6 +34,19 @@ export default function payment() {
                     <h3 className="text-lg/7 font-medium text-gray1">ชำระเงินค่ามัดจำ </h3>
                 </div>
 
+                {/* <div className="flex gap-5">
+                    <span className="countdown font-mono text-4xl">
+                        <span style={{ "--value": 24 } as any} aria-live="polite" aria-label="counter">24</span>
+                    </span>
+                    minutes
+                </div>
+                <div>
+                    <span className="countdown font-mono text-4xl">
+                        <span style={{ "--value": 59 } as any} aria-live="polite" aria-label="counter">59</span>
+                    </span>
+                    sec
+                </div> */}
+
                 <div className='flex flex-row gap-10'>
                     <div className='bg-slate-50 mt-3 rounded-lg p-5 w-2/3 space-y-2 h-[429px] drop-shadow-md'>
                         <div>

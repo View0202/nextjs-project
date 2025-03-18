@@ -127,14 +127,15 @@ export default function Login() {
                                     </div>
 
                                     <div>
-                                        <button 
-                                            type="submit" 
-                                            disabled={loading} 
-                                            className="flex w-full justify-center rounded-md bg-pink1 px-3 py-1.5 text-sm/6 font-semibold text-white1 shadow-sm hover:bg-pink1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink1"
+                                        <button
+                                            type="submit"
+                                            disabled={loading}
+                                            className="flex w-full justify-center rounded-md bg-pink1 px-3 py-1.5 text-sm/6 font-medium text-white1 shadow-sm hover:bg-pink1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-pink1"
                                         >
                                             {loading ? "กำลังโหลด..." : "เข้าสู่ระบบ"}
                                         </button>
                                     </div>
+
                                 </form>
 
                                 <div className="flex items-center justify-between mt-2">
@@ -145,7 +146,23 @@ export default function Login() {
                                         <a href="/signup" className="font-semibold text-pink1 hover:text-gray1">ลงทะเบียน</a>
                                     </div>
                                 </div>
+
+                                
+                                <div className="flex w-full flex-col">
+                                    <div className="divider" style={{ color: "#21211F" }}>หรือ</div>
+                                </div>
+
+                                <div>
+                                        <button
+                                            type="button"
+                                            className="flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-medium text-gray1 shadow-sm border border-gray1 hover:text-white1 hover:bg-gray1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gray1"
+                                        >
+                                            สำหรับเจ้าของร้าน
+                                        </button>
+                                    </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
