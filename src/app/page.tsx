@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-//import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import Map from "./components/map";
 import './swiper.css';
@@ -32,20 +32,26 @@ const employees = [
     {
         id: 1,
         name: 'แมว',
-        imageSrc: '/images/Employee.png',
+        imageSrc: "/images/Employee.png",
         imageAlt: 'ทรีตเมนต์, ทำเล็บ',
+        width: 64,
+        height: 64,
     },
     {
         id: 2,
         name: 'ชาย',
-        imageSrc: '/images/Employee.png',
-        imageAlt: 'สักคิ้ว, ทำเล็บ'
+        imageSrc: "/images/Employee.png",
+        imageAlt: 'สักคิ้ว, ทำเล็บ',
+        width: 64,
+        height: 64,
     },
     {
         id: 3,
         name: 'หญิง',
-        imageSrc: '/images/Employee.png',
-        imageAlt: 'สักคิ้ว, ทรีตเมนต์'
+        imageSrc: "/images/Employee.png",
+        imageAlt: 'สักคิ้ว, ทรีตเมนต์',
+        width: 64,
+        height: 64,
     },
 ];
 
@@ -365,12 +371,14 @@ export default function Home() {
                         <div className="mx-20 bg-slate-50 my-3 rounded-md shadow-md">
                             <div className="mx-auto max-w-xl px-5 py-10 sm:px-6 lg:max-w-7xl lg:px-10 flex justify-center items-center">
                                 <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-20">
-                                    {employees.map((employee) => (
+                                    {employees.map((employee,index) => (
                                         <div className="bg-[#FFFFFF] p-5 rounded-md shadow-md">
-                                            <a key={employee.id} className="group">
-                                                <img
+                                            <a key={employee.id || index + 1} className="group">
+                                                <Image
                                                     alt={employee.imageAlt}
                                                     src={employee.imageSrc}
+                                                    width={200}
+                                                    height={200}
                                                     className="aspect-square w-60 rounded-md bg-gray1-200 object-cover"
                                                 />
                                                 <h3 className="mt-4 text-lg text-black1">{employee.name}</h3>
@@ -493,10 +501,12 @@ export default function Home() {
 
                                             <div className="flex space-x-2 items-center">
                                                 <div className="h-10 w-10 bg-gray-300 rounded-full">
-                                                    <img
+                                                    <Image
                                                         alt=""
                                                         src={item.author.imageUrl}
                                                         className="size-10 rounded-full bg-gray1"
+                                                        width={40}
+                                                        height={40}
                                                     />
                                                 </div>
                                                 <div className="flex flex-col">

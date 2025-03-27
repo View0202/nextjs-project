@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { useAuth } from "../context/authContext";
 import Link from "next/link";
 import { ScanFace, Heart, ShoppingBag, LogIn, CircleUserRound, AlignRight } from "lucide-react";
@@ -34,7 +35,7 @@ export default function Navbar() {
                 }`}
         >
             <div className="navbar-start">
-                <img src="/images/Logo.png" alt="Logo" />
+                <Image src="/images/Logo.png" alt="Logo" width={240} height={48} />
             </div>
 
             <div className="navbar-center hidden lg:flex text-black1">
@@ -65,7 +66,7 @@ export default function Navbar() {
                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul id="menu" className="menu bg-slate-50 text-[#21211F] min-h-full w-80">
                         <div className="flex justify-center items-center mx-10">
-                            <img src="/images/Logo.png" alt="Logo" />
+                            <Image src="/images/Logo.png" alt="Logo" width={240} height={48} />
                         </div>
 
                         <li><Link href="/">หน้าแรก</Link></li>

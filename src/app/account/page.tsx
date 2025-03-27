@@ -17,7 +17,7 @@ interface Customer {
     age: string;
 }
 
-export default function profile() {
+export default function Profile() {
 
     const pageUrl = '/';
     const accountURL = '/account';
@@ -28,12 +28,12 @@ export default function profile() {
 
     const [customer, setCustomer] = useState<Customer | null>(null);
 
-    useEffect(() => {
-        fetch("http://localhost:8080/api/customer")
-            .then((res) => res.json())
-            .then((data) => setCustomer(data))
-            .catch((err) => console.error("Error fetching customer data:", err));
-    }, []);
+    // useEffect(() => {
+    //     fetch("http://localhost:8080/api/customer")
+    //         .then((res) => res.json())
+    //         .then((data) => setCustomer(data))
+    //         .catch((err) => console.error("Error fetching customer data:", err));
+    // }, []);
 
     return (
         <>
@@ -44,6 +44,8 @@ export default function profile() {
                     alt="bg-profile"
                     layout="fill"
                     objectFit="cover"
+                    // width={1920}
+                    // height={1080}
                 />
 
                 {/* เนื้อหาที่แสดงบนภาพพื้นหลัง */}
@@ -64,14 +66,16 @@ export default function profile() {
             </div>
 
             <div className='w-full flex flex-row'>
-            <div className="container w-20 sm:w-20 lg:w-1/4 xl:w-1/4 mb-5 bg-white rounded-md shadow-md">
+                <div className="container w-20 sm:w-20 lg:w-1/4 xl:w-1/4 mb-5 bg-white rounded-md shadow-md">
                     <div className='m-5'>
                         <div className="flex min-w-0 gap-x-2 items-center">
                             <div className='flex flex-row items-center m-2 gap-3'>
-                                <img
+                                <Image
                                     alt=""
                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                     className="inline-block size-10 rounded-full ring-1 ring-white1"
+                                    width={40}
+                                    height={40}
                                 />
                                 <div className="flex-auto">
                                     <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">{customer ? `${customer.name} ${customer.surname}` : '-'}

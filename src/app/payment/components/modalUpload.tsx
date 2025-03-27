@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Swal from 'sweetalert2';
 
 import { ImagePlus, CircleCheck } from 'lucide-react';
@@ -85,10 +86,12 @@ export default function ModalUpload() {
                                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                                     <div className="flex flex-col items-center justify-center h-full">
                                         {preview ? (
-                                            <img
+                                            <Image
                                                 src={preview}
                                                 alt="Uploaded preview"
                                                 className="h-40 w-auto rounded-md"
+                                                width={160}
+                                                height={160}
                                             />
                                         ) : (
                                             <ImagePlus aria-hidden="true" className="mx-auto size-12 text-gray-300" />

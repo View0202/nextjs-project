@@ -12,7 +12,7 @@ interface Customer {
     surname: string;
 }
 
-export default function coupon() {
+export default function Coupon() {
 
     const [customer, setCustomer] = useState<Customer | null>(null);
 
@@ -78,6 +78,8 @@ export default function coupon() {
                     alt="bg-profile"
                     layout="fill"
                     objectFit="cover"
+                // width={1920}
+                // height={1080}
                 />
 
                 {/* เนื้อหาที่แสดงบนภาพพื้นหลัง */}
@@ -103,14 +105,16 @@ export default function coupon() {
                     <div className='m-5'>
                         <div className="flex min-w-0 gap-x-2 items-center">
                             <div className='flex flex-row items-center m-2 gap-3'>
-                                <img
+                                <Image
                                     alt=""
                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                     className="inline-block size-10 rounded-full ring-1 ring-white1"
+                                    width={40}
+                                    height={40}
                                 />
                                 <div className="flex-auto">
                                     <p className="text-base font-semibold text-black1 hidden lg:block max-[1030px]:hidden">
-                                    {customer ? `${customer.name} ${customer.surname}` : '-'}
+                                        {customer ? `${customer.name} ${customer.surname}` : '-'}
                                     </p>
                                 </div>
                             </div>
@@ -158,10 +162,12 @@ export default function coupon() {
                                         {imagePreview ? (
                                             <div className="flex justify-center items-center h-80">
                                                 <div className="text-center">
-                                                    <img
+                                                    <Image
                                                         src={imagePreview}
                                                         alt="อัปโหลดใบหน้าของคุณ"
                                                         className="mx-auto rounded-lg size-80 object-cover"
+                                                        width={320}
+                                                        height={320}
                                                     />
                                                     <button
                                                         onClick={() => setImagePreview(null)}
@@ -177,6 +183,8 @@ export default function coupon() {
                                                     <Images
                                                         aria-hidden="true"
                                                         className="mx-auto size-40 text-gray-300"
+                                                        width={160}
+                                                        height={160}
                                                     />
                                                     <div className="mt-4 flex text-sm/6 text-gray-600 justify-center">
                                                         <label
@@ -222,11 +230,13 @@ export default function coupon() {
                                         <p className="mt-1 text-xs/6 text-gray-600">อธิบายจุดที่อยากแก้ไขบนใบหน้าของคุณ</p>
 
                                         <div className="mt-5 flex justify-around">
-                                            <button
+                                            {/* <button
+
                                                 className="px-4 py-2 text-white bg-red1 rounded-md hover:bg-red-600"
                                             >
                                                 ยกเลิก
-                                            </button>
+                                            </button> */}
+                                            
                                             <button
                                                 className="px-4 py-2 text-white bg-green1 rounded-md hover:bg-green-600"
                                                 onClick={handleSubmit} // 🟢 เรียกใช้ฟังก์ชันเมื่อกดปุ่ม

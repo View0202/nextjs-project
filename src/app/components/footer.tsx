@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Phone, ChevronRight, Facebook } from 'lucide-react';
 
@@ -20,7 +21,7 @@ export default function Footer() {
         <footer className="footer w-full bg-[#FFFFFF] text-black1 h-auto px-10 py-3 border-t border-gray1">
             <div className="w-full flex items-center justify-between">
                 <aside className="w-full flex justify-items-center sm:justify-center md:justify-center xl:justify-start">
-                    <img src="/images/Logo.png" alt="Logo" className="w-60 h-12" />
+                    <Image src="/images/Logo.png" alt="Logo" width={240} height={48} />
                 </aside>
                 <div className="items-center gap-20 hidden lg:flex">
                     <nav>

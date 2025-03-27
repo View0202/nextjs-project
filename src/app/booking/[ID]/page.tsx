@@ -21,7 +21,7 @@ export default function Booking({ ID }: BookingProps) {
     const params = useParams();
     const pageUrl = '/';
     const productAndServiceUrl = '/productAndService';
-    const id = params.ID;
+    const bookingID = params.ID;
 
     const [selectedEmployee, setSelectedEmployee] = useState<string | null>(null);
     const [availableTimes, setAvailableTimes] = useState<string[]>([]);
@@ -94,7 +94,7 @@ export default function Booking({ ID }: BookingProps) {
                     <div id="booking" className="container w-1/3 sm:w-1/3 lg:w-1/3 xl:w-1/3 my-5 bg-white border rounded-md shadow-md">
                         <div className='m-5'>
                             <div className="flex justify-start items-center border-b">
-                                <h3 className="font-semibold text-xl text-black1">กรอกข้อมูลการจองคิว{ID}</h3>
+                                <h3 className="font-semibold text-xl text-black1">กรอกข้อมูลการจองคิว{bookingID}</h3>
                             </div>
 
                             <div>

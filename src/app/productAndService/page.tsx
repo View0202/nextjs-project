@@ -7,10 +7,11 @@ import Sidebar from "./components/sidebar";
 import Search from "./components/search";
 import ProductCard from "./components/productCard";
 
-export default function productAndService() {
+export default function ProductAndService() {
 
-    // สร้าง state สำหรับเก็บรายการบริการ (services) ที่ดึงมา
-    const [services, setServices] = useState<ServiceItem[]>([]);
+    // สร้าง state สำหรับเก็บรายการบริการ (services) ที่ดึงมาจาก API
+    const [services, setServices] = useState<ServiceItem[]>([]); 
+
     // สร้าง state สำหรับเก็บรายการที่ถูกกรองเพื่อแสดงผล
     const [filteredProductAndServices, setFilteredProductAndServices] = useState<ServiceItem[]>([]);
 
@@ -95,9 +96,8 @@ export default function productAndService() {
                                             ? services.filter(item => item.service_type_name === filterCate).length
                                             : services.length} รายการ`}
                                 </p>
-
-
                             </div>
+                            
                             <div className='mx-10 border-t border-gray1'>
                                 {/* แสดงข้อมูล */}
                                 {currentItems && currentItems.length > 0 ? (

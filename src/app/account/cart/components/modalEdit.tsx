@@ -12,7 +12,7 @@ interface modalEditProps {
     time: string
 }
 
-export default function modalEdit({ id, title, price, name, phone, date, emp }: modalEditProps) {
+export default function ModalEdit({ id, title, price, name, phone, date, emp }: modalEditProps) {
     const [selectedEmployee, setSelectedEmployee] = useState<string | null>(null);
     const [availableTimes, setAvailableTimes] = useState<string[]>([]);
     const [selectedTime, setSelectedTime] = useState<string | null>(null);

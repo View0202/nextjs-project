@@ -1,0 +1,5 @@
+database : prisema
+login:{
+    "username" : "customeruser",
+    "password" : "admin123"
+}

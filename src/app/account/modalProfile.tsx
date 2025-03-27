@@ -12,7 +12,7 @@ interface Customer {
     age: string;
 }
 
-export default function modalProfile() {
+export default function ModalProfile() {
 
     const [loading, setLoading] = useState(false);
 

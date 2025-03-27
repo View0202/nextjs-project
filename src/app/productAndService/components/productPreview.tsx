@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Star from '@/app/components/star';
 import { useRouter } from "next/navigation";
 import { useHeart } from "../../context/heartContext";
@@ -34,12 +35,12 @@ export default function ProductPreview({ ID, name, price, image, subtitle }: Pro
     };
 
 
-    const handleBook = (ID: number) => {
+    const handleBook = () => {
         if (!session) {
             // ถ้ายังไม่ได้ล็อกอิน ให้ไปที่หน้า login ของ NextAuth
             signIn();
         } else {
-            router.push(`/booking/${ID}`); // ล็อกอินแล้วให้ไปหน้าจอง
+            router.push(`/`); // ล็อกอินแล้วให้ไปหน้าจอง
         }
     };
 
@@ -53,9 +54,11 @@ export default function ProductPreview({ ID, name, price, image, subtitle }: Pro
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
-                        <img
+                        <Image
                             alt={image}
                             src={image}
+                            width={40}
+                            height={40}
                             className="aspect-[2/3] w-full rounded-lg bg-gray-100 object-cover sm:col-span-4 lg:col-span-5"
                         />
                         <div className="sm:col-span-8 lg:col-span-7">
@@ -92,7 +95,7 @@ export default function ProductPreview({ ID, name, price, image, subtitle }: Pro
                                     <div className='flex justify-between gap-3'>
                                         <button
                                             type="submit"
-                                            onClick={() => handleBook(ID)}
+                                            onClick={handleBook}
                                             className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-pink1 px-5 py-2 text-base font-medium text-white hover:bg-pink-600"
                                         >
                                             จองคิว

@@ -47,6 +47,8 @@ const result = () => {
             id: 3,
             title: 'ผิวสวย',
             image: "/images/product/shampoo.png",
+            width: 200,
+            height: 200,
             date: '16 ธ.ค 2567',
             datetime: '2024-12-16',
             category: 'ทรีตเมนต์',
@@ -60,7 +62,7 @@ const result = () => {
         {
             id: 4,
             title: 'เล็บแข็งแรง',
-            image: "/images/product/nail.png",
+            image: "/images/product/Nail.png",
             date: '16 ธ.ค 2567',
             datetime: '2024-12-16',
             category: 'ทำเล็บ',
@@ -243,10 +245,12 @@ const result = () => {
                                                     <Star size={16} />
                                                 </div>
                                                 <div className="relative mt-2 flex items-center gap-x-4">
-                                                    <img
-                                                        alt=""
+                                                    <Image
+                                                        alt={item.author.name}
                                                         src={item.author.imageUrl}
                                                         className="size-10 rounded-full bg-gray1"
+                                                        width={40}
+                                                        height={40}
                                                     />
                                                     <div className="text-sm/6">
                                                         <p className="font-semibold text-black1">

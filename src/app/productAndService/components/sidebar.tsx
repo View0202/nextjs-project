@@ -8,7 +8,7 @@ interface sidebarProps {
     onFilter: (category: string) => void
 }
 
-export default function sidebar({ onFilter }: sidebarProps) {
+export default function Sidebar({ onFilter }: sidebarProps) {
     const router = useRouter();
 
     const [ProductDropdown, setProductDropdown] = useState(true);

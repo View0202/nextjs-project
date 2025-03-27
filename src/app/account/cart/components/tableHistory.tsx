@@ -2,6 +2,7 @@ import React from "react";
 import ModalDetail from "./modalDetail";
 import { dataHistory } from "./dataHistory.js";
 import Noitems from "@/app/components/noitems";
+import Image from "next/image";
 
 import { CircleCheck, Trash2 } from 'lucide-react';
 import ModalDelete from "./modalDelete";
@@ -31,7 +32,12 @@ const TableComponent = () => {
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle h-16 w-16">
-                                            <img src={history.image} alt={history.title} />
+                                            <Image
+                                                src={history.image}
+                                                alt={history.title}
+                                                width={64}
+                                                height={64}
+                                            />
                                         </div>
                                     </div>
                                     <div className="text-black1">

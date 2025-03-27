@@ -45,12 +45,13 @@ const TableComponent = () => {
                                                 src={book.image}
                                                 alt={book.title}
                                                 layout="fill"
+                                                width={64}
+                                                height={64}
                                             />
                                         </div>
                                     </div>
                                     <div className="text-black1">
                                         <div className="text-base font-bold">{book.title}</div>
-
                                     </div>
                                 </div>
                             </td>
